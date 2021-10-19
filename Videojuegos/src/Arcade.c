@@ -233,9 +233,13 @@ int imprimirJuegosEnUso(char lista[][63], int lon)
 	if(lista != NULL && lon > 0)
 	{
 		for (i = 0; i < lon; ++i) {
-			printf("\n\t%s", lista[i]);
-			fflush(stdin);
-			estado = 0;
+			if(strcmp(lista[i],"")!=0)
+			{
+				printf("\n\t%s", lista[i]);
+				fflush(stdin);
+				estado = 0;
+
+			}
 		}
 
 	}
