@@ -204,15 +204,19 @@ int generarListaJuegos(Arcade lista[], int lon, char juego[][63])
 	int indListaJuegos;
 
 	indListaJuegos = -1;
-	for (i = 0; i < lon; ++i)
+	if(lista != NULL && lon > 0)
 	{
-		//hay un arcade
-		if(juegoEnArcade(juego, lon, lista[i].nombreJuego) == -1)//CHAR, -1 no esta
+		indListaJuegos = 0;
+		for (i = 0; i < lon; ++i)
 		{
-			//el juego del arcade i no esta entonces lo agrego
-			strncpy(juego[indListaJuegos], lista[i].nombreJuego, 63);
-			 //no es asi x q es char
-			indListaJuegos++;
+			//hay un arcade
+			if(juegoEnArcade(juego, lon, lista[i].nombreJuego) == -1)//CHAR, -1 no esta
+			{
+				//el juego del arcade i no esta entonces lo agrego
+				strncpy(juego[indListaJuegos], lista[i].nombreJuego, 63);
+				 //no es asi x q es char
+				indListaJuegos++;
+			}
 		}
 	}
 	return indListaJuegos;
