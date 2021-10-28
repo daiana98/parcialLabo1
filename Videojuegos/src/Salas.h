@@ -36,4 +36,7 @@ int imprimirSalones(Sala lista[], int lon);
 void imprimirSala(Sala* unaSala);
 int eliminarSalon(Sala lista[], int lon, int id);
 void cargarSalas(Sala lista[], int lon);
+
+/*--------*/
+Sala* crearUnaSala(void);
 #endif /* SALAS_H_ */

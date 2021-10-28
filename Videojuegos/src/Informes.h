@@ -18,4 +18,9 @@ int listarArcadesDeUnSalon(Arcade listaArcade[], int lonArc, int idSalon, Sala* 
 int imprimirSalonMaxArcades(Sala listaSala[], int lonSala, Arcade listaArcade[], int lonArc);
 int montoMaxDeUnSalon(Arcade listaArcade[], int lonArc, int idSalon, Sala* pSala, float monto);
 int imprimirArcadesPorJuego(Arcade listaArcade[], int lonArc, char nombreJuego[]);
+int salonEquipado(Sala listaSala[], int lonSala, Arcade listaArcade[], int lonArc);
+int contarJugPorArcade(int id, Arcade listaArcade[], int lonArc);
+int imprimirPromedio(Sala listaSala[], int lonSala, Arcade listaArcade[], int lonArc);
+
+
 #endif /* INFORMES_H_ */

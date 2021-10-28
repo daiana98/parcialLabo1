@@ -156,7 +156,13 @@ int eliminarArcadesPorIdSalon(Arcade lista[], int lon, int idSalon)
 
 void imprimirUnArcade(Arcade* arcade)
 {
-	printf("\n\tID: %d\n\tNombre del Juego: %s\n\tNacionalidad: %s\n\tTipo de Sonido: %d\n\tID del Salon: %d\n\tCantidad de Jugadores: %d\n\tCapacidad Maxima de Fichas %d\n",arcade->id, arcade->nombreJuego, arcade->nacionalidad, arcade->tipoSonido, arcade->idSalon, arcade->cantJugadores, arcade->capMaxFichas);
+	printf("\n\tID: %d\n\tNombre del Juego: %s\n\tNacionalidad: %s\n\tID del Salon: %d\n\tCantidad de Jugadores: %d\n\tCapacidad Maxima de Fichas %d",arcade->id, arcade->nombreJuego, arcade->nacionalidad, arcade->idSalon, arcade->cantJugadores, arcade->capMaxFichas);
+	if(arcade->tipoSonido == MONO)
+		{
+			printf("\n\tTipo de Sonido: Mono\n");
+		}
+		else
+			printf("\n\tTipo de Sonido: Estereo\n");
 }
 
 int imprimirArcades(Arcade lista[], int lon)
@@ -270,8 +276,24 @@ void cargarArcade(Arcade lista[], int lon, char listaJuegos[][63])
 	agregarArcade(lista, lon, obtenerIdArcade(), "Paraguaya", "Asteroids", 0, 8, 4000, 1);
 	agregarArcade(lista, lon, obtenerIdArcade(), "Uruguaya", "Donkey Kong", 1, 20, 200, 2);
 	agregarArcade(lista, lon, obtenerIdArcade(), "Paraguaya", "Donkey Kong", 1, 1, 1000, 3);
-	agregarArcade(lista, lon, obtenerIdArcade(), "Argentina", "Los Simpsons", 0, 30, 3000, 4);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Argentina", "Los Simpsons", 0, 30, 3000, 1);
 	agregarArcade(lista, lon, obtenerIdArcade(), "Boliviana", "Frogger", 1, 10, 2500, 5);
+
+	agregarArcade(lista, lon, obtenerIdArcade(), "Uruguaya", "Asteroids", 1, 6, 3200, 1);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Paraguaya", "Asteroids", 0, 8, 4000, 1);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Uruguaya", "Donkey Kong", 1, 20, 200, 1);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Paraguaya", "Donkey Kong", 1, 1, 1000, 1);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Argentina", "Los Simpsons", 0, 30, 3000, 1);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Boliviana", "Simpsons", 1, 1, 2500, 1);
+
+	agregarArcade(lista, lon, obtenerIdArcade(), "Uruguaya", "Asteroids", 1, 6, 3200, 3);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Paraguaya", "Asteroids", 0, 8, 4000, 3);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Uruguaya", "Donkey Kong", 1, 20, 200, 3);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Paraguaya", "Donkey Kong", 1, 5, 1000, 3);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Argentina", "Los Simpsons", 0, 30, 3000, 3);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Boliviana", "Simpsons", 1, 7, 2500, 3);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Argentina", "Lolsito", 0, 10, 500, 3);
+	agregarArcade(lista, lon, obtenerIdArcade(), "Argentina", "Wow", 1, 10, 1000, 3);
 
 	strncpy(listaJuegos[obtenerIdJuego()-1], "Lolsito", 63);
 	strncpy(listaJuegos[obtenerIdJuego()-1], "Wow", 63);
@@ -289,6 +311,23 @@ void cargarArcade(Arcade lista[], int lon, char listaJuegos[][63])
 	strncpy(listaJuegos[obtenerIdJuego()-1], "Donkey Kong", 63);
 	strncpy(listaJuegos[obtenerIdJuego()-1], "Los Simpsons", 63);
 	strncpy(listaJuegos[obtenerIdJuego()-1], "Frogger", 63);
+
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Asteroids", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Asteroids", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Donkey Kong", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Donkey Kong", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Los Simpsons", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Simpsons", 63);
+
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Asteroids", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Asteroids", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Donkey Kong", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Donkey Kong", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Los Simpsons", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Simpsons", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Lolsito", 63);
+	strncpy(listaJuegos[obtenerIdJuego()-1], "Wow", 63);
+
 
 
 }

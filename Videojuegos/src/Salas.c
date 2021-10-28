@@ -8,7 +8,15 @@
 
 static int buscarEspacioLibre(Sala* lista, int lon);
 
+//devuelve Null si no se pudo y sino devuelve el puntero de la estructura sala
+Sala* crearUnaSala(void)
+{
+	Sala* pSala;
+	pSala = malloc(sizeof(Sala));
 
+	return pSala;
+}
+/*------*/
 int iniSalas(Sala lista[], int lon)
 {
     int estado;
@@ -143,7 +151,7 @@ void imprimirSala(Sala* unaSala)
 void cargarSalas(Sala lista[], int lon)
 {
 	agregarSala(lista, lon, obtenerIdSala(), "La casa de los Juegos", "Calle Falsa 123", 0);
-	agregarSala(lista, lon, obtenerIdSala(), "La casita del horror", "Av. Siempreviva 123", 1);
+	agregarSala(lista, lon, obtenerIdSala(), "La casita del miedo", "Av. Siempreviva 123", 1);
 	agregarSala(lista, lon, obtenerIdSala(), "El hueco", "Calle Falsa 123", 0);
 	agregarSala(lista, lon, obtenerIdSala(), "El barco de la diversion", "Av. rivadavi 2342", 1);
 	agregarSala(lista, lon, obtenerIdSala(), "El rincon de los deseos", "Moron 543", 1);

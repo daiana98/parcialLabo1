@@ -44,6 +44,18 @@ int main(void) {
 	iniSalas(listaSalas, LON_SALAS);
 	iniArcade(listaArcades, LON_ARC);
 
+	/*----------*/
+	Sala* pSala;
+	pSala = crearUnaSala();//cree una estructura Sala (dinamica, el espacio de memoria esta en el heap)
+	//puntero display
+//me hago un array de punteros que guarda 4 bytes de dir de memoria, los elementos son peques y los punteros apuntan a
+	//los espacio de memoria de las Salas que los pido con
+	//malloc de forma independiente, cada puntero va a estar en diferentes lugares yo me hago un array de las direcciones de esos espacio de memorias
+
+	//creo un array estatico de punteros de Sala
+	Sala* punterosSalas[1000];//inicializo los punteros en NULL
+
+	/*----------*/
 	cargarSalas(listaSalas, LON_SALAS);
 	cargarArcade(listaArcades, LON_ARC, juegos);
 	do {
@@ -213,9 +225,9 @@ int main(void) {
 					printf("\nError al generar la lista de juegos");
 				break;
 			case 9:
-				if(utn_getInt(&subOption, "\nSUBMENU DE OPCIONES:\n\t1-  Listar los salones con más de 4 arcades.\n\t2- Listar los arcades para más de 2 jugadores."
+				if(utn_getInt(&subOption, "\nSUBMENU DE OPCIONES:\n\t1- Listar los salones con más de 4 arcades.\n\t2- Listar los arcades para más de 2 jugadores."
 						"\n\t3- Listar toda la información de un salón.\n\t4- Listar todos los arcades de un salón\n\t5- Imprimir el salón con más cantidad de arcades\n\t6- Imprimir el monto máximo que puederecaudar el salón"
-						"\n\t7- Ingresar el nombre de un juego e imprimir cuantos arcades lo contienen", "Error.", 1, 7, REINTENTOS) == 0)
+						"\n\t7- Ingresar el nombre de un juego e imprimir cuantos arcades lo contienen\n\t8- Listar los salones equipados por completo\n\t9- Imprimir promedio de arcades por salon", "Error.", 1, 9, REINTENTOS) == 0)
 				{
 					switch (subOption) {
 						case 1:
@@ -302,6 +314,19 @@ int main(void) {
 							if(utn_getText(nombreJuego, 63, "\nIngrese el nombre del juego", "\nError. ", REINTENTOS) == 0)
 							{
 								imprimirArcadesPorJuego(listaArcades, LON_ARC, nombreJuego);
+							}
+							break;
+						case 8:
+							if(salonEquipado(listaSalas, LON_SALAS, listaArcades, LON_ARC) == -1)
+							{
+								printf("Error, al listar los salones equipados");
+							}
+
+							break;
+						case 9:
+							if(imprimirPromedio(listaSalas, LON_SALAS, listaArcades, LON_ARC) == -1)
+							{
+								printf("Error, al listar los salones equipados");
 							}
 							break;
 					}

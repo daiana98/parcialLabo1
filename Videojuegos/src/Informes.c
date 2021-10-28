@@ -60,7 +60,7 @@ void imprimirUnArcadeConNom(Sala listaSala[], int lonSala, int idSalon, Arcade* 
 	int i;
 
 	printf("\n\tID: %d\n\tNombre del Juego: %s\n\tNacionalidad: %s\n\tTipo de Sonido: %d\n\tCantidad de Jugadores: %d\n\tCapacidad Maxima de Fichas %d",arcade->id, arcade->nombreJuego, arcade->nacionalidad, arcade->tipoSonido, arcade->cantJugadores, arcade->capMaxFichas);
-	for (i = 0; i < lonSala; ++i) {
+	for (i = 0; i < lonSala; i++) {
 		if (listaSala[i].id == idSalon) {
 			printf("\n\tNombre del Salon: %s\n", listaSala[i].nombre);
 		}
@@ -68,6 +68,26 @@ void imprimirUnArcadeConNom(Sala listaSala[], int lonSala, int idSalon, Arcade* 
 
 }
 
+/*int listarArcadesMinDosJug(Arcade listaArcade[], int lonArc, Sala listaSala[], int lonSala)
+{
+	int estado;
+	int i;
+
+	estado = -1;
+	if(listaArcade != NULL && listaSala != NULL && lonArc > 0 && lonSala > 0)
+	{
+		for (i = 0; i < lonArc; ++i) {
+			estado = 0;
+			if(arcadeMinDosJugadores(&listaArcade[i]) == 0)
+			{
+				imprimirUnArcadeConNom(listaSala, lonSala, listaArcade[i].idSalon, &listaArcade[i]);
+				estado = 0;
+			}
+		}
+	}
+	return estado;
+}
+*/
 int listarArcadesMinDosJugadores(Arcade listaArcade[], int lonArc, Sala listaSala[], int lonSala)
 {
 	int estado;
@@ -245,4 +265,90 @@ int imprimirArcadesPorJuego(Arcade listaArcade[], int lonArc, char nombreJuego[]
 		}
 	}
 	return cantArcades;
+}
+
+/* Un  salón se  encuentra  equipado  por completo  si posee  al menos  8  arcades  de  mas  de 2  jugadores.
+ * Listar los salones que cumplan con este mínimo de requisito.*/
+
+int contarJugPorArcade(int id, Arcade listaArcade[], int lonArc)
+{
+	int i;
+	int cont;
+
+	cont=0;
+	for (i = 0; i < lonArc; ++i) {
+		if(listaArcade[i].idSalon == id)
+		{
+			if(listaArcade[i].cantJugadores >= 2)
+			{
+				cont++;
+			}
+		}
+	}
+	return cont;
+}
+//tiene mas de 2 jugadores
+int salonEquipado(Sala listaSala[], int lonSala, Arcade listaArcade[], int lonArc)
+{
+	int estado;
+	int i;
+	int cantArcades;
+
+	estado = -1;
+	cantArcades = 0;
+	if(listaArcade != NULL && listaSala != NULL && lonArc > 0 && lonSala > 0)
+	{
+		estado = 0;
+		printf("\nLos salones que son completos son: ");
+		for (i = 0; i < lonSala; ++i)
+		{
+			if(listaSala[i].estaVacio == LLENO)
+			{
+				cantArcades = contarJugPorArcade(listaSala[i].id, listaArcade, lonArc);
+				if (cantArcades >= 8)
+				{
+					imprimirSala(&listaSala[i]);
+				}
+
+
+			}
+		}
+	}
+	return estado;
+}
+
+/*Imprimir el promedio de arcades por salón. (Cantidad de arcades totales / Cantidad de salones totales)*/
+
+int imprimirPromedio(Sala listaSala[], int lonSala, Arcade listaArcade[], int lonArc)
+{
+	int estado;
+	int i;
+	int cantArcadeTot;
+	int cantSalonTot;
+	float promedio;
+
+	estado = -1;
+	cantArcadeTot = 0;
+	cantSalonTot = 0;
+	if(listaArcade != NULL && listaSala != NULL && lonArc > 0 && lonSala > 0)
+	{
+		estado = 0;
+		for (i = 0; i < lonSala; ++i)
+		{
+			if(listaSala[i].estaVacio == LLENO)
+			{
+				cantSalonTot++;
+			}
+		}
+		for (i = 0; i < lonArc; ++i)
+		{
+			if(listaArcade[i].estaVacio == LLENO)
+			{
+				cantArcadeTot++;
+			}
+		}
+		promedio = (float)cantArcadeTot/cantSalonTot;
+		printf("\nEl promedio de arcades por salon es: %.2f", promedio);
+	}
+	return estado;
 }
